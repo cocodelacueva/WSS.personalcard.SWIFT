@@ -6,8 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CC79026F2FB75164004A0B60 /* personalcard Watchkitapp Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CC7902652FB75163004A0B60 /* personalcard Watchkitapp Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CC79026D2FB75164004A0B60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CC79022D2FB73C5F004A0B60 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC7902642FB75163004A0B60;
+			remoteInfo = "personalcard Watchkitapp Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CC7902732FB75164004A0B60 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CC79026F2FB75164004A0B60 /* personalcard Watchkitapp Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		CC7902352FB73C5F004A0B60 /* personalcard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = personalcard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC7902652FB75163004A0B60 /* personalcard Watchkitapp Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "personalcard Watchkitapp Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -18,6 +47,14 @@
 			);
 			target = CC7902342FB73C5F004A0B60 /* personalcard */;
 		};
+		CC7902772FB7525F004A0B60 /* Exceptions for "personalcard" folder in "personalcard Watchkitapp Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CardHelpers.swift,
+				WatchSync.swift,
+			);
+			target = CC7902642FB75163004A0B60 /* personalcard Watchkitapp Watch App */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -25,14 +62,27 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				CC7902602FB745C1004A0B60 /* Exceptions for "personalcard" folder in "personalcard" target */,
+				CC7902772FB7525F004A0B60 /* Exceptions for "personalcard" folder in "personalcard Watchkitapp Watch App" target */,
 			);
 			path = personalcard;
+			sourceTree = "<group>";
+		};
+		CC7902662FB75163004A0B60 /* personalcard Watchkitapp Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "personalcard Watchkitapp Watch App";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CC7902322FB73C5F004A0B60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7902622FB75163004A0B60 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				CC7902372FB73C5F004A0B60 /* personalcard */,
+				CC7902662FB75163004A0B60 /* personalcard Watchkitapp Watch App */,
 				CC7902362FB73C5F004A0B60 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				CC7902352FB73C5F004A0B60 /* personalcard.app */,
+				CC7902652FB75163004A0B60 /* personalcard Watchkitapp Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,10 +120,12 @@
 				CC7902312FB73C5F004A0B60 /* Sources */,
 				CC7902322FB73C5F004A0B60 /* Frameworks */,
 				CC7902332FB73C5F004A0B60 /* Resources */,
+				CC7902732FB75164004A0B60 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CC79026E2FB75164004A0B60 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CC7902372FB73C5F004A0B60 /* personalcard */,
@@ -81,6 +135,28 @@
 			);
 			productName = personalcard;
 			productReference = CC7902352FB73C5F004A0B60 /* personalcard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CC7902642FB75163004A0B60 /* personalcard Watchkitapp Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC7902702FB75164004A0B60 /* Build configuration list for PBXNativeTarget "personalcard Watchkitapp Watch App" */;
+			buildPhases = (
+				CC7902612FB75163004A0B60 /* Sources */,
+				CC7902622FB75163004A0B60 /* Frameworks */,
+				CC7902632FB75163004A0B60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CC7902662FB75163004A0B60 /* personalcard Watchkitapp Watch App */,
+			);
+			name = "personalcard Watchkitapp Watch App";
+			packageProductDependencies = (
+			);
+			productName = "personalcard Watchkitapp Watch App";
+			productReference = CC7902652FB75163004A0B60 /* personalcard Watchkitapp Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -94,6 +170,9 @@
 				LastUpgradeCheck = 2650;
 				TargetAttributes = {
 					CC7902342FB73C5F004A0B60 = {
+						CreatedOnToolsVersion = 26.5;
+					};
+					CC7902642FB75163004A0B60 = {
 						CreatedOnToolsVersion = 26.5;
 					};
 				};
@@ -113,12 +192,20 @@
 			projectRoot = "";
 			targets = (
 				CC7902342FB73C5F004A0B60 /* personalcard */,
+				CC7902642FB75163004A0B60 /* personalcard Watchkitapp Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CC7902332FB73C5F004A0B60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC7902632FB75163004A0B60 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,7 +222,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CC7902612FB75163004A0B60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CC79026E2FB75164004A0B60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CC7902642FB75163004A0B60 /* personalcard Watchkitapp Watch App */;
+			targetProxy = CC79026D2FB75164004A0B60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CC79023E2FB73C60004A0B60 /* Debug */ = {
@@ -257,13 +359,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = personalcard/personalcard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = YNA9H97VHX;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = personalcard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "White Suit Perfonal Card";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -278,19 +384,20 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.4;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.whitesuit.personalcard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 26.5;
 			};
 			name = Debug;
@@ -300,13 +407,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = personalcard/personalcard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = YNA9H97VHX;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = personalcard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "White Suit Perfonal Card";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -321,20 +432,90 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.4;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.whitesuit.personalcard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 26.5;
+			};
+			name = Release;
+		};
+		CC7902712FB75164004A0B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "personalcard Watchkitapp Watch App/personalcard Watchkitapp Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = YNA9H97VHX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "personalcard Watchkitapp";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.whitesuit.personalcard;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.whitesuit.personalcard.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.5;
+			};
+			name = Debug;
+		};
+		CC7902722FB75164004A0B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "personalcard Watchkitapp Watch App/personalcard Watchkitapp Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = YNA9H97VHX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "personalcard Watchkitapp";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.whitesuit.personalcard;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 3.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.whitesuit.personalcard.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.5;
 			};
 			name = Release;
 		};
@@ -355,6 +536,15 @@
 			buildConfigurations = (
 				CC7902412FB73C60004A0B60 /* Debug */,
 				CC7902422FB73C60004A0B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC7902702FB75164004A0B60 /* Build configuration list for PBXNativeTarget "personalcard Watchkitapp Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC7902712FB75164004A0B60 /* Debug */,
+				CC7902722FB75164004A0B60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

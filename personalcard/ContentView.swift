@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    // @AppStorage lee/escribe directo en UserDefaults y refresca la vista al cambiar.
-    @AppStorage(StorageKeys.company) private var company = ""
-    @AppStorage(StorageKeys.name)    private var name    = ""
-    @AppStorage(StorageKeys.phone)   private var phone   = ""
-    @AppStorage(StorageKeys.email)   private var email   = ""
-    @AppStorage(StorageKeys.text)    private var text    = ""
-    @AppStorage(StorageKeys.url)     private var url     = ""
-    @AppStorage(StorageKeys.font)    private var selectedFont: AppFont = .system
+    // @AppStorage lee/escribe en UserDefaults compartido (App Group) — así el Watch ve los mismos datos.
+    @AppStorage(StorageKeys.company, store: SharedStorage.defaults) private var company = ""
+    @AppStorage(StorageKeys.name,    store: SharedStorage.defaults) private var name    = ""
+    @AppStorage(StorageKeys.phone,   store: SharedStorage.defaults) private var phone   = ""
+    @AppStorage(StorageKeys.email,   store: SharedStorage.defaults) private var email   = ""
+    @AppStorage(StorageKeys.text,    store: SharedStorage.defaults) private var text    = ""
+    @AppStorage(StorageKeys.url,     store: SharedStorage.defaults) private var url     = ""
+    @AppStorage(StorageKeys.font,    store: SharedStorage.defaults) private var selectedFont: AppFont = .system
+    // PNG del QR ya generado. Se actualiza al editar la URL; aquí solo se lee.
+    @AppStorage(StorageKeys.qrImageData, store: SharedStorage.defaults) private var qrImageData: Data = Data()
 
     @State private var showingEdit = false
 
@@ -55,12 +57,21 @@ struct ContentView: View {
             .sheet(isPresented: $showingEdit) {
                 EditView()
             }
+            .onAppear {
+                // Migración / fallback: si hay URL pero todavía no se persistió la imagen, generala.
+                if !url.isEmpty && qrImageData.isEmpty {
+                    QRGenerator.regenerateAndStore(from: url)
+                }
+                // Empuja el estado actual al Watch al abrir la app — útil si el Watch
+                // se instala/abre después de haber cargado datos en el iPhone.
+                WatchSync.shared.push()
+            }
         }
     }
 
     @ViewBuilder
     private var qrView: some View {
-        if let qr = QRGenerator.generate(from: url) {
+        if let qr = UIImage(data: qrImageData) {
             Image(uiImage: qr)
                 .interpolation(.none) // QR nítido sin antialiasing
                 .resizable()

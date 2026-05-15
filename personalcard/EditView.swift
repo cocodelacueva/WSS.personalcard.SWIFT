@@ -6,16 +6,22 @@
 import SwiftUI
 
 struct EditView: View {
-    // Mismas claves que ContentView: al editar acá, la pantalla principal se actualiza sola.
-    @AppStorage(StorageKeys.company) private var company = ""
-    @AppStorage(StorageKeys.name)    private var name    = ""
-    @AppStorage(StorageKeys.phone)   private var phone   = ""
-    @AppStorage(StorageKeys.email)   private var email   = ""
-    @AppStorage(StorageKeys.text)    private var text    = ""
-    @AppStorage(StorageKeys.url)     private var url     = ""
-    @AppStorage(StorageKeys.font)    private var selectedFont: AppFont = .system
+    // Mismas claves y mismo store compartido que ContentView y el Watch.
+    @AppStorage(StorageKeys.company, store: SharedStorage.defaults) private var company = ""
+    @AppStorage(StorageKeys.name,    store: SharedStorage.defaults) private var name    = ""
+    @AppStorage(StorageKeys.phone,   store: SharedStorage.defaults) private var phone   = ""
+    @AppStorage(StorageKeys.email,   store: SharedStorage.defaults) private var email   = ""
+    @AppStorage(StorageKeys.text,    store: SharedStorage.defaults) private var text    = ""
+    @AppStorage(StorageKeys.url,     store: SharedStorage.defaults) private var url     = ""
+    @AppStorage(StorageKeys.font,    store: SharedStorage.defaults) private var selectedFont: AppFont = .system
 
     @Environment(\.dismiss) private var dismiss
+
+    // Snapshot serializado de todos los campos — se usa para detectar cualquier cambio
+    // y empujarlo al Watch en una sola .onChange.
+    private var snapshot: String {
+        "\(company)|\(name)|\(phone)|\(email)|\(text)|\(url)|\(selectedFont.rawValue)"
+    }
 
     var body: some View {
         NavigationStack {
@@ -52,6 +58,14 @@ struct EditView: View {
                         }
                     }
                 }
+
+                Section {
+                    NavigationLink("Licencias de tipografías") {
+                        LicensesView()
+                    }
+                } footer: {
+                    Text("Raleway y Open Sans · SIL Open Font License 1.1")
+                }
             }
             .navigationTitle("Editar")
             .navigationBarTitleDisplayMode(.inline)
@@ -59,6 +73,14 @@ struct EditView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Listo") { dismiss() }
                 }
+            }
+            // Regenera el QR cada vez que cambia la URL.
+            .onChange(of: url) { _, newValue in
+                QRGenerator.regenerateAndStore(from: newValue)
+            }
+            // Empuja al Watch ante cualquier cambio en los campos (snapshot detecta todo).
+            .onChange(of: snapshot) { _, _ in
+                WatchSync.shared.push()
             }
         }
     }
