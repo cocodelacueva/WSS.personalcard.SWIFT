@@ -1,0 +1,89 @@
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Xcode
+build/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+
+# Xcode - User settings
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+*.xcscmblueprint
+*.xccheckout
+
+# Xcode - Build products
+*.o
+*.lo
+*.la
+*.al
+*.libs
+*.so
+*.so.[0-9]*
+*.a
+*.pyc
+*.swp
+*~
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.pins
+Package.resolved
+*.xcodeproj
+.netrc
+
+# CocoaPods
+Pods/
+*.xcworkspace
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+Carthage/Checkouts
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Code Injection
+iOSInjectionProject/
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Provisioning profiles & certificates
+*.mobileprovision
+*.p12
+*.cer
+*.certSigningRequest
+
+# Environment & secrets
+.env
+.env.local
+*.secrets
+
+# IDE
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
