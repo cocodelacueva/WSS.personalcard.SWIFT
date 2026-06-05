@@ -20,6 +20,7 @@ struct ContentView: View {
     @AppStorage(StorageKeys.qrImageData, store: SharedStorage.defaults) private var qrImageData: Data = Data()
 
     @State private var showingEdit = false
+    @State private var showingNotes = false
 
     var body: some View {
         NavigationStack {
@@ -65,6 +66,14 @@ struct ContentView: View {
                 // Empuja el estado actual al Watch al abrir la app — útil si el Watch
                 // se instala/abre después de haber cargado datos en el iPhone.
                 WatchSync.shared.push()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Notas", systemImage: "doc") { showingNotes = true }
+                        .foregroundStyle(.black)
+                }
+            }.sheet(isPresented: $showingNotes) {
+                NotesView()
             }
         }
     }

@@ -28,6 +28,7 @@ enum StorageKeys {
     static let text        = "text"
     static let url         = "url"
     static let font        = "font"
+    static let notes       = "notes"
     static let qrImageData = "qrImageData" // PNG bytes del QR — el iPhone lo genera, el Watch lo lee.
 }
 
