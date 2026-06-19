@@ -1,0 +1,106 @@
+//
+//  IntranetStore.swift
+//  personalcard
+//
+//  Created by coco on 08/06/2026.
+//
+
+import Foundation
+import Observation
+import SwiftUI
+
+@Observable
+final class IntranetStore {
+    var personas: [Persona] = []
+    var entities: [Entity] = []
+    var crm: [CRMLead] = []
+    var lastSync: Date?
+    var lastSyncFailed = false
+    var isLoading = false
+    var errorMessage: String?
+    
+    private let client = SyncClient()
+    
+    init() { 
+        loadCache()
+    }
+    // Refresca solo si pasaron más de 24h (o nunca sincronizó).
+    func refreshIfStale() async {
+        let oneDay: TimeInterval = 24 * 60 * 60
+        if let last = lastSync, Date().timeIntervalSince(last) < oneDay { return }
+        await refresh()
+    }
+    
+    func refresh() async {
+        isLoading = true
+        errorMessage = nil
+        defer { isLoading = false }
+        do {
+            personas = try await client.personas()
+            entities = try await client.entities()
+            crm      = try await client.crm()
+            lastSync = Date()
+            lastSyncFailed = false
+            
+            saveCache()
+            // TODO (Paso 11): Notifier.scheduleNextSteps(from: crm)
+        } catch SyncError.noKey {
+            errorMessage = "Pegá tu API key para sincronizar."
+            
+        } catch SyncError.unauthorized {
+            errorMessage = "Tu acceso venció. Generá una key nueva en la intranet."
+            lastSyncFailed = true
+            
+        } catch {
+            errorMessage = "No se pudo sincronizar (¿sin conexión?)."
+            
+            lastSyncFailed = true     // ⚠️ NO toco lastSync: queda la última buena
+        }
+    }
+        
+    private struct CachedData: Codable {
+        var personas: [Persona]
+        var entities: [Entity]
+        var crm: [CRMLead]
+        var lastSync: Date?
+    }
+
+    private var cacheURL: URL {
+        let dir = URL.applicationSupportDirectory
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        return dir.appendingPathComponent("contacts-cache.json")
+    }
+
+    func saveCache() {
+        let snapshot = CachedData(personas: personas, entities: entities, crm: crm, lastSync: lastSync)
+        do {
+            let data = try JSONEncoder().encode(snapshot)
+            try data.write(to: cacheURL, options: .atomic)   // atomic = nunca queda a medias
+        } catch {
+            print("No se pudo guardar caché:", error)
+        }
+    }
+
+    func loadCache() {
+        guard let data = try? Data(contentsOf: cacheURL),
+              let cached = try? JSONDecoder().decode(CachedData.self, from: data) else {
+            return   // primera vez / no hay archivo: normal, no pasa nada
+        }
+        personas = cached.personas
+        entities = cached.entities
+        crm      = cached.crm
+        lastSync = cached.lastSync
+    }
+}
+
+//datos de mentira, solo en debug
+#if DEBUG
+extension IntranetStore {
+    static var preview: IntranetStore {
+        let store = IntranetStore()
+        store.personas = Persona.samples
+        store.entities = Entity.samples
+        return store
+    }
+}
+#endif
