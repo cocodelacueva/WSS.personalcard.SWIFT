@@ -18,11 +18,14 @@ final class IntranetStore {
     var lastSyncFailed = false
     var isLoading = false
     var errorMessage: String?
+    var hasKey = false
+    var keyExpiredAlert = false
     
     private let client = SyncClient()
     
     init() { 
         loadCache()
+        hasKey = KeychainStore.read(account: KeychainStore.apiKeyAccount) != nil
     }
     // Refresca solo si pasaron más de 24h (o nunca sincronizó).
     func refreshIfStale() async {
@@ -49,6 +52,9 @@ final class IntranetStore {
             
         } catch SyncError.unauthorized {
             errorMessage = "Tu acceso venció. Generá una key nueva en la intranet."
+            KeychainStore.delete(account: KeychainStore.apiKeyAccount)
+            hasKey = false
+            keyExpiredAlert = true      // 👈 dispara el popup
             lastSyncFailed = true
             
         } catch {

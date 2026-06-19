@@ -20,7 +20,6 @@ struct EntitiesListView: View {
     
     var body: some View {
         NavigationStack {
-            Text(store.lastSyncText).font(.subheadline).padding(2)
             List(filtered) { e in
                 DisclosureGroup {
                     entityBody(for: e)
@@ -32,6 +31,11 @@ struct EntitiesListView: View {
                 }
             }
             .searchable(text: $search)
+            .safeAreaInset(edge: .top) {
+                Text(store.lastSyncText)
+                    .font(.subheadline)
+                    .padding(4)
+            }
             .refreshable { await store.refresh() }// pull-to-refresh
             .navigationTitle("Entidades")
             .toolbar {

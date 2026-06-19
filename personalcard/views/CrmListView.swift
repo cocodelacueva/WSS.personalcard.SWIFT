@@ -12,7 +12,6 @@ struct CrmListView: View {
     
     var body: some View {
         NavigationStack {
-            Text(store.lastSyncText).font(.subheadline).padding(2)
             List(store.crm) { p in
                 VStack(alignment: .leading) {
                     HStack {
@@ -33,6 +32,11 @@ struct CrmListView: View {
                         
                     }
                 }
+            }
+            .safeAreaInset(edge: .top) {
+                Text(store.lastSyncText)
+                    .font(.subheadline)
+                    .padding(4)
             }
             .refreshable { await store.refresh() }// pull-to-refresh
             .navigationTitle("CRM")

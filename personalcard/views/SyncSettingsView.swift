@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SyncSettingsView: View {
+    @Environment(IntranetStore.self) private var store
     @State private var keyInput = ""
     @State private var connected = KeychainStore.read(account: KeychainStore.apiKeyAccount) != nil
     
@@ -21,6 +22,7 @@ struct SyncSettingsView: View {
                         Button("Desconectar", role: .destructive) {
                             KeychainStore.delete(account: KeychainStore.apiKeyAccount)
                             connected = false
+                            store.hasKey = false
                         }
                     } else {
                         SecureField("Pegá tu API key (wsk_...)", text: $keyInput)
@@ -28,8 +30,8 @@ struct SyncSettingsView: View {
                             KeychainStore.save(keyInput, account:  KeychainStore.apiKeyAccount)
                             connected = true
                             keyInput = ""
-                            // TODO: pedí permiso de notificaciones (Paso 11) y dispará:
-                            //       Task { await store.refresh() }
+                            store.hasKey = true
+                            Task { await store.refresh() }
                         }
                         .disabled(keyInput.isEmpty)
                     }
@@ -43,4 +45,5 @@ struct SyncSettingsView: View {
 
 #Preview {
     SyncSettingsView()
+        .environment(IntranetStore.preview)
 }

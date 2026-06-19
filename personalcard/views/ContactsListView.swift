@@ -22,7 +22,6 @@ struct ContactsListView: View {
     
     var body: some View {
         NavigationStack {
-            Text(store.lastSyncText).font(.subheadline).padding(2)
             List(filtered) { p in
                 DisclosureGroup {
                     contactBody(for: p)
@@ -37,6 +36,11 @@ struct ContactsListView: View {
                 }
             }
             .searchable(text: $search)
+            .safeAreaInset(edge: .top) {
+                Text(store.lastSyncText)
+                    .font(.subheadline)
+                    .padding(4)
+            }
             .refreshable { await store.refresh() }// pull-to-refresh
             .navigationTitle("Contactos")
             .toolbar {
