@@ -90,6 +90,14 @@ struct Persona: Codable, Identifiable {
 
 // Persona+Samples.swift — datos de mentira, solo en debug
 #if DEBUG
+extension CRMLead {
+    static let samples: [CRMLead] = [
+        CRMLead(
+            id:1,personaName: "Miguel Gorboff",entityName: "Coca-Cola",stageName: "Negociación",nextStep: "Esperar respuesta de AMD",nextStepDate: "2026-06-23T00:00:00Z",estimatedValue: "13200.00",currency: "USD",lastActivityDate: "2026-06-18T00:00:00Z",firstActivityDate: "2026-04-09T00:00:00Z",interestLevel: "high"
+        )
+    ]
+}
+
 extension Persona {
     static let samples: [Persona] = [
         Persona(id: 1, name: "Cosme Fulanito", telephone: "+54911123451", email: "cosme@fulanito.com", country: "Argentina", region: "LATAM", location: "CABA", category: "Medios", meta: [], entities: [
@@ -106,7 +114,7 @@ extension Persona {
 extension Entity {
     static let samples: [Entity] = [
         Entity(
-            id: 1, name: "White Suit Studio", industry: "Videojuegos", category: "videojuegos", country: "Argentina", region: "LATAM", location: "CABA", url: "https://Whitesuit.studio", email:nil),
+            id: 1, name: "White Suit Studio", industry: "Videojuegos", category: "videojuegos", country: "Argentina", region: "LATAM", location: "CABA", url: "https://Whitesuit.studio", email:"email@emilio.com"),
         Entity(
             id: 5, name: "BENE.luxic", industry: "Ventas", category: "Sales",country: "Estados Unidos",region: "NA",location: "Miami",url: "https://www.beneluxic.com/",email: nil)
     ]

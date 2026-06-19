@@ -12,6 +12,7 @@ struct CrmListView: View {
     
     var body: some View {
         NavigationStack {
+            Text(store.lastSyncText).font(.subheadline).padding(2)
             List(store.crm) { p in
                 VStack(alignment: .leading) {
                     HStack {
@@ -35,10 +36,21 @@ struct CrmListView: View {
             }
             .refreshable { await store.refresh() }// pull-to-refresh
             .navigationTitle("CRM")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        Task { await store.refresh() }
+                    } label: {
+                        Label("Sincronizar", systemImage: "arrow.clockwise")
+                    }
+                    .disabled(store.isLoading)
+                }
+            }
         }
     }
 }
 
 #Preview {
     CrmListView()
+        .environment(IntranetStore.preview)
 }

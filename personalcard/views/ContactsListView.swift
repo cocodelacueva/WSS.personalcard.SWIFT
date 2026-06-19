@@ -22,6 +22,7 @@ struct ContactsListView: View {
     
     var body: some View {
         NavigationStack {
+            Text(store.lastSyncText).font(.subheadline).padding(2)
             List(filtered) { p in
                 DisclosureGroup {
                     contactBody(for: p)
@@ -47,6 +48,16 @@ struct ContactsListView: View {
                     }
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        Task { await store.refresh() }
+                    } label: {
+                        Label("Sincronizar", systemImage: "arrow.clockwise")
+                    }
+                    .disabled(store.isLoading)
+                }
+            }
         }
         
         
@@ -66,14 +77,18 @@ struct ContactsListView: View {
             if let entity = p.entities.first {
                 HStack {
                     if let rol = entity.rol {
-                        Text( "\(rol) @")
+                        Text(rol)
+                            .foregroundStyle(Color.secondary)
+                            .font(Font.subheadline.weight(.light))
+                        Text("@")
                             .foregroundStyle(Color.secondary)
                             .font(Font.subheadline.weight(.light))
                     }
                     Text(entity.name).font(.subheadline).foregroundStyle(Color.secondary).font(Font.subheadline.weight(.bold))
                 }
+                Divider()
             }
-            Divider()
+            
             if let email = p.email, let url = URL(string: "mailto:\(email)") {
                 Link(destination: url) {
                     Label(email, systemImage: "envelope")

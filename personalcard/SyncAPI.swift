@@ -16,8 +16,8 @@ enum SyncError: Error {
 
 enum SyncAPI {
     // Simulador: localhost = tu Mac. iPhone físico: la IP de tu Mac en la WiFi.
-    //static let baseURL = URL(string: "https://intranetapi.whitesuit.studio")!
-    static let baseURL = URL(string: "http://intranetapi.wss.local")!
+    static let baseURL = URL(string: "https://intranetapi.whitesuit.studio")!
+    //static let baseURL = URL(string: "http://intranetapi.wss.local")!
     //static let baseURL = URL(string: "http://localhost:8080")!
 }
 

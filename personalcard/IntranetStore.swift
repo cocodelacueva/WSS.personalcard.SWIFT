@@ -93,6 +93,21 @@ final class IntranetStore {
     }
 }
 
+extension IntranetStore {
+    var lastSyncText: String {
+        guard let last = lastSync else { return "Nunca sincronizado" }
+        let f = RelativeDateTimeFormatter()
+        f.unitsStyle = .full
+        return "Actualizado " + f.localizedString(for: last, relativeTo: Date())
+    }
+
+    /// True si pasó más de ~25h del último sync exitoso (algo no anda).
+    var isStale: Bool {
+        guard let last = lastSync else { return true }
+        return Date().timeIntervalSince(last) > 25 * 60 * 60
+    }
+}
+
 //datos de mentira, solo en debug
 #if DEBUG
 extension IntranetStore {
@@ -100,6 +115,7 @@ extension IntranetStore {
         let store = IntranetStore()
         store.personas = Persona.samples
         store.entities = Entity.samples
+        store.crm = CRMLead.samples
         return store
     }
 }
