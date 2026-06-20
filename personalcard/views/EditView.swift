@@ -92,6 +92,9 @@ struct EditView: View {
     }
 }
 
+
+#if DEBUG
 #Preview {
     EditView()
 }
+#endif

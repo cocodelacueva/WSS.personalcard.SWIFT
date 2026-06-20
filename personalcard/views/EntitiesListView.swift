@@ -108,7 +108,10 @@ struct EntitiesListView: View {
     }
 }
 
+
+#if DEBUG
 #Preview {
     EntitiesListView()
         .environment(IntranetStore.preview)
 }
+#endif

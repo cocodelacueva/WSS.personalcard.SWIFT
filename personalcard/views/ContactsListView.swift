@@ -128,7 +128,9 @@ struct ContactsListView: View {
     
 }
 
+#if DEBUG
 #Preview {
     ContactsListView()
         .environment(IntranetStore.preview)
 }
+#endif

@@ -29,6 +29,8 @@ struct NotesView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     NotesView()
 }
+#endif

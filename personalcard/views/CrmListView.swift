@@ -54,7 +54,9 @@ struct CrmListView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     CrmListView()
         .environment(IntranetStore.preview)
 }
+#endif

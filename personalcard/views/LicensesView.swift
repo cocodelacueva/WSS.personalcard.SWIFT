@@ -97,6 +97,9 @@ struct LicensesView: View {
     """
 }
 
+
+#if DEBUG
 #Preview {
     NavigationStack { LicensesView() }
 }
+#endif

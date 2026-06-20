@@ -40,7 +40,9 @@ struct ContentView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     ContentView()
         .environment(IntranetStore.preview)
 }
+#endif

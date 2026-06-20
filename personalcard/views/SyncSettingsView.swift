@@ -43,7 +43,9 @@ struct SyncSettingsView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     SyncSettingsView()
         .environment(IntranetStore.preview)
 }
+#endif

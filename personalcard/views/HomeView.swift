@@ -86,6 +86,8 @@ struct HomeView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     HomeView()
 }
+#endif
