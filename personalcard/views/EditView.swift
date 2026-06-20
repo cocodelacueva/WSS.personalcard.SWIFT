@@ -66,6 +66,12 @@ struct EditView: View {
                 } footer: {
                     Text("Raleway y Open Sans · SIL Open Font License 1.1")
                 }
+                
+                Section {
+                    NavigationLink("API Key Intranet") {
+                        SyncSettingsView()
+                    }
+                }
             }
             .navigationTitle("Editar")
             .navigationBarTitleDisplayMode(.inline)

@@ -24,14 +24,7 @@ struct NotesView: View {
               }
               .padding()
             }
-          
-        
-        .navigationTitle("Tomar notas")
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Listo") { dismiss() }
-            }
-        }
+          .navigationTitle("Tomar notas")
         }
     }
 }

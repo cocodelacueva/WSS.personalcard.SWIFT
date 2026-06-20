@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct personalcardApp: App {
+    @State private var intranet = IntranetStore()
     init() {
         // Activa WCSession al arrancar la app — recibe pushes del Watch y permite enviar.
         _ = WatchSync.shared
@@ -17,6 +18,8 @@ struct personalcardApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(intranet)
+                .task { await intranet.refreshIfStale() }
         }
     }
 }
